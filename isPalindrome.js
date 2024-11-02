@@ -7,6 +7,21 @@ const hrtime = process.hrtime;
  * @return {boolean}
  */
 var isPalindrome = function (x) {
+  let Xn = String(x);
+  let Xnr = ``;
+  for (let i = Xn.length-1; i >= 0; i--) {
+
+    Xnr = `${Xnr}${Xn[i]}`;
+  }
+  console.log(Xnr,Xn);
+  return Xnr===Xn;
+  /* 
+  11ms Beats 37.96%
+  59.06MB Beats 16.37%
+  */
+};
+
+var isPalindrome1 = function (x) {
   let isPalindrome = true;
   let Xn = String(x);
   let j = Xn.length - 1;
