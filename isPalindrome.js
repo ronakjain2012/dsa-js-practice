@@ -7,14 +7,27 @@ const hrtime = process.hrtime;
  * @return {boolean}
  */
 var isPalindrome = function (x) {
+  let reserve = 0;
+  let remainder = x;
+  while (remainder > 0) {
+    reserve = reserve * 10 + (remainder % 10);
+    remainder = ~~(remainder / 10);
+  }
+  return reserve==x;
+  /* 
+  3ms Beats 99.72%
+  55.97MB Beats 98.21%
+  */
+};
+
+var isPalindrome2 = function (x) {
   let Xn = String(x);
   let Xnr = ``;
-  for (let i = Xn.length-1; i >= 0; i--) {
-
+  for (let i = Xn.length - 1; i >= 0; i--) {
     Xnr = `${Xnr}${Xn[i]}`;
   }
-  console.log(Xnr,Xn);
-  return Xnr===Xn;
+  console.log(Xnr, Xn);
+  return Xnr === Xn;
   /* 
   11ms Beats 37.96%
   59.06MB Beats 16.37%
