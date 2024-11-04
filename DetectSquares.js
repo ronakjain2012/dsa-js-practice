@@ -17,7 +17,7 @@ DetectSquares.prototype.add = function (point) {
 
 /**
  * @param {number[]} point
- * @return {number}DetectSquares.js
+ * @return {number}DetectSquares.js 
  */
 DetectSquares.prototype.count = function (point) {
   this._points.push(new Point(point[0], point[1]));
