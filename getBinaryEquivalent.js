@@ -12,29 +12,42 @@ var decToBinary = (x) => {
     n = x;
   while (n > 0) {
     bin.push(~~(n % 2));
-    n = ~~ (n / 2);
+    n = ~~(n / 2);
   }
   return bin.reverse().join('');
 };
 
-var getBinaryEquivalent = function (x) {
-  let number = x,
-    binArr = [];
-  while (number > 0) {
-    binArr[number - 1] = decToBinary(number);
-    number--;
+var binaryToDec = (x) => {
+  let numbers = x.split('').reverse();
+  let count = 0;
+  let sum = 0;
+  if (numbers.length == 1) {
+    return 1;
   }
-  return binArr;
+  while (count < numbers.length) {
+    sum += Number(numbers[count]) * (2 ** count);
+    count++;
+  }
+
+  // sum += Number(numbers[count - 1]);
+  return sum;
 };
 
-var getDecimalEquivalent = function (x) {
+function modulo109Plus7(number) {
+  return number;
+  return (number % 1000000007); 
+}
+
+var getBinaryEquivalent = function (x) {
+  // let bin = decToBinary(x);
+  // console.log('binary ', bin);
   let number = x,
     binArr = [];
   while (number > 0) {
     binArr[number - 1] = decToBinary(number);
     number--;
   }
-  return binArr;
+  return modulo109Plus7(binaryToDec(binArr.join('')));
 };
 
 (async () => {
